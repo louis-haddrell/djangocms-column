@@ -1,19 +1,43 @@
 version: 2
 
-jobs:
-  # using tox
-  toxify:
+executors:
+  py33:
     docker:
-      - image: circleci/python
+      - image: circleci/python:3.3
+  py34:
+    docker:
+      - image: circleci/python:3.4
+  py35:
+    docker:
+      - image: circleci/python:3.5
+  py36:
+    docker:
+      - image: circleci/python:3.6
+  py37:
+    docker:
+      - image: circleci/python:3.7
+  py38:
+    docker:
+      - image: circleci/python:3.8
 
+jobs:
+  test:
+    parameters:
+      executor:
+        type: executor
+    executor: << parameters.executor >>
     steps:
+      - run: echo << parameters.executor >>
       - checkout
-      - run: pyenv global 3.3.7 3.4.10 3.5.9
-      - run: pip install tox && tox
+      - run: pip install tox
+      - run: tox --skip-missing-interpreters
 
 workflows:
   version: 2
 
-  myproj:
+  tests:
     jobs:
-      - toxify
+      - test:
+        matrix:
+          parameters:
+            executor: [py33, py34, py35, py36, py37, py38]
