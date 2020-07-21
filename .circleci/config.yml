@@ -8,7 +8,7 @@ jobs:
 
     steps:
       - checkout
-
+      - run: pyenv global 3.3.7 3.4.10 3.5.9
       - run: pip install tox && tox
 
 workflows:
