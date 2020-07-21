@@ -27,7 +27,6 @@ jobs:
         type: executor
     executor: << parameters.py >>
     steps:
-      - run: echo << parameters.py >>
       - checkout
       - run: pip install tox
       - run: tox --skip-missing-interpreters
