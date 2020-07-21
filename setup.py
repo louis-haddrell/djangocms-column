@@ -7,7 +7,11 @@ from djangocms_column import __version__
 
 INSTALL_REQUIRES = [
     'django-cms>=3.4.5',
-    'Django>=1.11,<3.0',
+    'Django>=1.11,<4.0',
+]
+
+TESTS_REQUIRE = [
+   'django-app-helper' 
 ]
 
 CLASSIFIERS = [
@@ -46,5 +50,7 @@ setup(
     classifiers=CLASSIFIERS,
     long_description=open('README.rst').read(),
     include_package_data=True,
+    tests_require=TESTS_REQUIRE,
+    test_suite='tests.runner.run',
     zip_safe=False
 )

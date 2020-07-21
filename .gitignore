@@ -1,11 +1,16 @@
 *.log
 *.pot
 *.pyc
+
+.eggs
+.idea
 .project
 .pydevproject
 .settings
+.tox
+.vscode
+
 build
 env*
 dist
 djangocms_column.egg-info
-.idea
