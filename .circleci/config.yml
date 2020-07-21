@@ -1,40 +1,44 @@
 version: 2.1
 
-executors:
-  py33:
-    docker:
-      - image: circleci/python:3.3
-  py34:
-    docker:
-      - image: circleci/python:3.4
-  py35:
-    docker:
-      - image: circleci/python:3.5
-  py36:
-    docker:
-      - image: circleci/python:3.6
-  py37:
-    docker:
-      - image: circleci/python:3.7
-  py38:
-    docker:
-      - image: circleci/python:3.8
-
 jobs:
   test:
     parameters:
-      py:
-        type: executor
-    executor: << parameters.py >>
+      python:
+        type: string
+      toxenv:
+        type: string
+    executor:
+      docker:
+        - image: circleci/python:<< parameters.python >>
     steps:
       - checkout
       - run: pip install tox
-      - run: tox --skip-missing-interpreters
+      - run: tox -e << parameters.toxenv >>
 
 workflows:
   all-tests:
     jobs:
       - test:
-          matrix:
-            parameters:
-              py: [py33, py34, py35, py36, py37, py38]
+          name: "python-3.3"
+          python: "3.3"
+          toxenv: "py33"
+      - test:
+          name: "python-3.4"
+          python: "3.4"
+          toxenv: "py34"
+      - test:
+          name: "python-3.5"
+          python: "3.5"
+          toxenv: "py35"
+      - test:
+          name: "python-3.6"
+          python: "3.6"
+          toxenv: "py36"
+      - test:
+          name: "python-3.7"
+          python: "3.7"
+          toxenv: "py37"
+      - test:
+          name: "python-3.8"
+          python: "3.8"
+          toxenv: "py38"
