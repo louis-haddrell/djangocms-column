@@ -1,1 +1,2 @@
 django-app-helper
+six>=1.9.0

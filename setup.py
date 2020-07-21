@@ -7,7 +7,8 @@ from djangocms_column import __version__
 
 INSTALL_REQUIRES = [
     'django-cms>=3.4.5',
-    'Django>=1.11,<4.0',
+    'six>=1.9.0',
+    'Django>=1.11,<4',
 ]
 
 TESTS_REQUIRE = [
