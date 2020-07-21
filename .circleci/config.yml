@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 
 executors:
   py33:
@@ -32,8 +32,6 @@ jobs:
       - run: tox --skip-missing-interpreters
 
 workflows:
-  version: 2
-
   all-tests:
     jobs:
       - test:
