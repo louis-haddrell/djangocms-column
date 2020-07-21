@@ -7,9 +7,8 @@ jobs:
         type: string
       toxenv:
         type: string
-    executor:
-      docker:
-        - image: circleci/python:<< parameters.python >>
+    docker:
+      - image: circleci/python:<< parameters.python >>
     steps:
       - checkout
       - run: pip install tox
