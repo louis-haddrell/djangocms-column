@@ -18,14 +18,6 @@ workflows:
   all-tests:
     jobs:
       - test:
-          name: "python-3.3"
-          python: "3.3"
-          toxenv: "py33"
-      - test:
-          name: "python-3.4"
-          python: "3.4"
-          toxenv: "py34"
-      - test:
           name: "python-3.5"
           python: "3.5"
           toxenv: "py35"
