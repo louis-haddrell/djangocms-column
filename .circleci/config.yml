@@ -37,6 +37,6 @@ workflows:
   all-tests:
     jobs:
       - test:
-        matrix:
-          parameters:
-            py: [py33, py34, py35, py36, py37, py38]
+          matrix:
+            parameters:
+              py: [py33, py34, py35, py36, py37, py38]
