@@ -23,11 +23,11 @@ executors:
 jobs:
   test:
     parameters:
-      executor:
+      py:
         type: executor
-    executor: << parameters.executor >>
+    executor: << parameters.py >>
     steps:
-      - run: echo << parameters.executor >>
+      - run: echo << parameters.py >>
       - checkout
       - run: pip install tox
       - run: tox --skip-missing-interpreters
@@ -35,9 +35,9 @@ jobs:
 workflows:
   version: 2
 
-  tests:
+  all-tests:
     jobs:
       - test:
         matrix:
           parameters:
-            executor: [py33, py34, py35, py36, py37, py38]
+            py: [py33, py34, py35, py36, py37, py38]
